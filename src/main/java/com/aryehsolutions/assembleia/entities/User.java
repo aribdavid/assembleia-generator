@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,6 +30,10 @@ public class User implements Serializable {
 		@JsonIgnore
 		@OneToMany(mappedBy = "associate")
 		private List<Agenda> agendas = new ArrayList<>();
+
+		@JsonIgnore
+		@OneToMany(mappedBy = "associate", fetch = FetchType.EAGER)
+		private List<Vote> votes = new ArrayList<>();
 		
 		
 		public User() {
@@ -98,7 +104,6 @@ public class User implements Serializable {
 		
 		
 	
-		
-		
+			
 		
 }

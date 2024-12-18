@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aryehsolutions.assembleia.entities.Agenda;
-import com.aryehsolutions.assembleia.entities.User;
 import com.aryehsolutions.assembleia.repositories.AgendaRepository;
 
 @Service

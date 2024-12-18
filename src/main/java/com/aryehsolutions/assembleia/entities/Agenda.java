@@ -1,7 +1,7 @@
 package com.aryehsolutions.assembleia.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -21,62 +21,65 @@ public class Agenda implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private String title;
+	
 	@JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
-	private Instant moment;
+	private Timestamp created_at;
 	
 	@ManyToOne
-	@JoinColumn(name = "associate_id")
+	@JoinColumn(name = "created_by")
 	private User associate;
 	
-	
+
+
 	public Agenda() {
 		
 	}
 
-
-	public Agenda(Long id, Instant moment, User associate) {
+	public Agenda(Long id, String title, Timestamp created_at, User associate) {
 		super();
 		this.id = id;
-		this.moment = moment;
+		this.title = title;
+		this.created_at = created_at;
 		this.associate = associate;
 	}
-
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
-	public Instant getMoment() {
-		return moment;
+	public String getTitle() {
+		return title;
 	}
 
-
-	public void setMoment(Instant moment) {
-		this.moment = moment;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
+	public Timestamp getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(Timestamp created_at) {
+		this.created_at = created_at;
+	}
 
 	public User getAssociate() {
 		return associate;
 	}
 
-
 	public void setAssociate(User associate) {
 		this.associate = associate;
 	}
-
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -89,8 +92,7 @@ public class Agenda implements Serializable {
 		Agenda other = (Agenda) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
+
 	
 
 }
