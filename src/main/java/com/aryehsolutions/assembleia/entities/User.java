@@ -16,7 +16,7 @@ public class User implements Serializable {
 		
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private long id;
+		private Long id;
 		private String cpf;
 		private String name;
 		
@@ -25,13 +25,13 @@ public class User implements Serializable {
 		}
 
 
-		public User(long id, String cpf, String name) {
+		public User(Long id, String cpf, String name) {
 			super();
 			this.id = id;
 			this.cpf = cpf;
 			this.name = name;
 		}
-
+		
 
 		public long getId() {
 			return id;
