@@ -51,7 +51,15 @@ public class Voting implements Serializable {
 		this.id = id;
 		this.agenda = agenda;
 		this.createdAt = createdAt;
-		this.duration =  Duration.ofMinutes(duration);
+		this.duration =  Duration.ofMinutes(duration) ;
+	}
+	
+	public Voting(Long id, Agenda agenda, Timestamp createdAt) {
+		super();
+		this.id = id;
+		this.agenda = agenda;
+		this.createdAt = createdAt;
+		this.duration =  Duration.ofMinutes(1) ;
 	}
 	
     public long calculateEndDate(Timestamp currentTimestamp) {

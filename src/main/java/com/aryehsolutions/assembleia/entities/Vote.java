@@ -39,7 +39,7 @@ public class Vote implements Serializable {
 	@JoinColumn(name = "associate_id", nullable = false)
 	private User associate;
 
-
+	
 
 	public Vote() {
 
@@ -96,7 +96,14 @@ public class Vote implements Serializable {
 	public String getVoteValue() {
 		return voteValue;
 	}
+	
+    public User getAssociate() {
+        return associate;
+    }
 
+    public void setAssociate(User associate) {
+        this.associate = associate;
+    }
 
 
 	@Override

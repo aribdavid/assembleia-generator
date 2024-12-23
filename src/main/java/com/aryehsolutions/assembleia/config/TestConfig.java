@@ -43,7 +43,7 @@ public class TestConfig implements CommandLineRunner {
 		userRepository.saveAll(Arrays.asList(u1, u2));
 
 		Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-		long duration = 1;
+		long duration = 27;
 
 		Agenda a1 = new Agenda(null, "Pauta 1", currentTimestamp, u1);
 		Agenda a2 = new Agenda(null, "Pauta 2", currentTimestamp, u2);
@@ -53,8 +53,9 @@ public class TestConfig implements CommandLineRunner {
 
 		Voting v1 = new Voting(null, a1, currentTimestamp, duration);
 		Voting v2 = new Voting(null, a2, currentTimestamp, duration);
+		Voting v3 = new Voting(null, a3, currentTimestamp);
 
-		votingRepository.saveAll(Arrays.asList(v1, v2));
+		votingRepository.saveAll(Arrays.asList(v1, v2, v3));
 
 		Vote vo1 = new Vote(null, "sim", currentTimestamp, v1, u1);
 		Vote vo2 = new Vote(null, "sim", currentTimestamp, v1, u2);

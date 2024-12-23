@@ -32,4 +32,6 @@ public class VoteResource {
 		Vote obj = service.findById(id);
 		return  ResponseEntity.ok().body(obj);
 	}
+	
+	
 }
