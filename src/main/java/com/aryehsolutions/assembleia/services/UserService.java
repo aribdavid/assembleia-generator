@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.aryehsolutions.assembleia.entities.User;
 import com.aryehsolutions.assembleia.repositories.UserRepository;
+import com.aryehsolutions.assembleia.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -21,7 +22,7 @@ public class UserService {
 	
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	public User insert(User obj) {
@@ -30,6 +31,18 @@ public class UserService {
 	
 	public void delete(Long id) {
 		repository.deleteById(id);
+	}
+	
+	public User update(Long id, User obj) {
+		User entity = repository.getReferenceById(id); 
+		updateDate(entity, obj);
+		return repository.save(entity);
+	}
+
+	private void updateDate(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setCpf(obj.getCpf());	
+		
 	}
 
 }
